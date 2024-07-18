@@ -1,10 +1,22 @@
 
+import express from "express";
+import dotenv from "dotenv";
+import OpenAI from "openai";
+import cors from "cors";
+dotenv.config();
+const openai = new OpenAI ({
+    apiKey:process.env.OPENAI_API_KEY,    
+});
+const app = express()
+app.use(express.json());
+app.use(cors());
+
 const appController = {
-   
+     
     runPrompt: async (req, res) => {
         const prompt = `Don't include in the response
             "creating", "creating an ai", "generating", "ai", "desgining", "video", "incorporating".
-            My request is: Please provide 3 ideas of 
+            My request is: write me  3 ideas of :
             ${req.body.type + req.body.length + req.body.addressee + req.body.mainSubject + req.body.SubTheme + req.body.atmosphere} 
             Also, return the response in JSON format that can be parsed as follows:
             {

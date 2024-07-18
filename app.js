@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
   })
 
-app.post('/gpt', appController.main);
+app.post('/gpt', appController.post);
 
 app.listen(process.env.PORT, () => {
     console.log(`Example app listening on http://localhost:${process.env.PORT}`)
